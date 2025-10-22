@@ -11,6 +11,10 @@ public class ComparisonResult {
         this.file2Line = file2Line;
     }
 
+    public boolean isIdentical() {
+        return file1Line.replaceAll("\\s+", "").equalsIgnoreCase(file2Line.replaceAll("\\s+", ""));
+    }
+
     private String highlightDifferences(String s1, String s2) {
         StringBuilder highlighted1 = new StringBuilder();
         StringBuilder highlighted2 = new StringBuilder();
@@ -37,7 +41,7 @@ public class ComparisonResult {
 
     @Override
     public String toString() {
-        if (file1Line.equals(file2Line)) {
+        if (isIdentical()) {
             return String.format("Строка %d: совпадает", lineNumber);
         } else {
             return String.format("""

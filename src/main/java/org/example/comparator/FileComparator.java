@@ -22,5 +22,14 @@ public class FileComparator {
 
         return results;
     }
+
+    public static void displayDifferences(String path1, String path2) throws IOException {
+        List<ComparisonResult> results = compareFiles(path1, path2);
+
+        System.out.println("Сравнение файлов " + path1 + " и " + path2 + ":");
+        for (ComparisonResult result : results) {
+            System.out.println(result);
+        }
+    }
 }
 
